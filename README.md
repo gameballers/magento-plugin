@@ -7,7 +7,7 @@
 
 ## Extension installation 
 Run the following commands inside the root directory of magento to install the extension.
-1. ` composer require gameball/magento-plugin`
+1. ` composer require gameball-app/magento-plugin`
 2. ` php bin/magento setup:upgrade`
 3. ` php bin/magento setup:static-content:deploy -f`
 

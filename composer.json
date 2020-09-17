@@ -1,5 +1,5 @@
 {
-    "name": "gameball/magento-plugin",
+    "name": "gameball-app/magento-plugin",
     "type": "magento2-module",
     "description":"Gameball Extension - Gamification, Customer Loyalty and Retention ",
     "version":"1.0.0",
