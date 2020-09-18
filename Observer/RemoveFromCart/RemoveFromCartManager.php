@@ -2,8 +2,6 @@
 
 namespace GbPlugin\Integration\Observer\RemoveFromCart;
 
-require_once BP . '/vendor/autoload.php';
-
 use Exception;
 
 class RemoveFromCartManager

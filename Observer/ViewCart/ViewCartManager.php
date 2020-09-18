@@ -5,9 +5,6 @@ use GbPlugin\Integration\Observer\Product\ViewProductManager;
 
 use Exception;
 
-require_once BP . '/vendor/autoload.php';
-
-
 class ViewCartManager
 {
     

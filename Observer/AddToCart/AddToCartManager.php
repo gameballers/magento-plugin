@@ -2,8 +2,6 @@
 
 namespace GbPlugin\Integration\Observer\AddToCart;
 
-require_once BP . '/vendor/autoload.php';
-
 use Exception;
 
 class AddToCartManager
