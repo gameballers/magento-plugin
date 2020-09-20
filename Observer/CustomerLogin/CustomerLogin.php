@@ -14,7 +14,7 @@ class CustomerLogin implements ObserverInterface
 
     public function __construct(   
         CustomerLoginManager $CustomerLoginManager
-    ){
+    ) {
         $this->CustomerLoginManager = $CustomerLoginManager;
     }
 

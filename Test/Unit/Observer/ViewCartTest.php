@@ -38,7 +38,7 @@ class ViewCartTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
            
-        $this->manager = new ViewCartManager($ClientkeysTableMock,$GbEnableCheckerMock,$SessionMock,$CartMock);
+        $this->manager = new ViewCartManager($ClientkeysTableMock, $GbEnableCheckerMock, $SessionMock, $CartMock);
         $this->object = new ViewCart($this->manager);
     }
 

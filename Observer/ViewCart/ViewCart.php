@@ -11,7 +11,7 @@ class ViewCart implements ObserverInterface
 
     public function __construct(   
         \GbPlugin\Integration\Observer\ViewCart\ViewCartManager $ViewCartManager
-        ){
+    ) {
         $this->ViewCartManager = $ViewCartManager;
     }
 

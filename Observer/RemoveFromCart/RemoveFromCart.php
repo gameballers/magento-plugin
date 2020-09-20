@@ -17,10 +17,10 @@ class RemoveFromCart implements ObserverInterface
     
     public function __construct(   
         \GbPlugin\Integration\Observer\RemoveFromCart\RemoveFromCartManager $RemoveFromCartManager
-        ){
+    ) {
         $this->RemoveFromCartManager = $RemoveFromCartManager;
     }
-   /**
+    /**
      * Below is the method that will fire whenever the event runs!
      *
      * @param Observer $observer

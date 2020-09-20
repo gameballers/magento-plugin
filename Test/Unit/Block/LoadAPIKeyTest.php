@@ -29,7 +29,7 @@ class LoadAPIKeyTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->object = new LoadAPIKey($contextMock,$sessionMock,$clientkeysTableMock);
+        $this->object = new LoadAPIKey($contextMock, $sessionMock, $clientkeysTableMock);
     }
 
     public function testLoadAPIKeyInstance()

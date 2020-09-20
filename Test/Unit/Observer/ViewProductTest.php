@@ -38,7 +38,7 @@ class ViewProductTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
            
-        $this->manager = new ViewProductManager($SessionMock,$ClientkeysTableMock,$CategoryFactoryMock,$GbEnableCheckerMock);
+        $this->manager = new ViewProductManager($SessionMock, $ClientkeysTableMock, $CategoryFactoryMock, $GbEnableCheckerMock);
         $this->object = new ViewProduct($this->manager);
    
     }

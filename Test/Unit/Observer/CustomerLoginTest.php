@@ -28,7 +28,7 @@ class CustomerLoginTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->manager = new CustomerLoginManager($ClientkeysTableMock,$CustomerMock);
+        $this->manager = new CustomerLoginManager($ClientkeysTableMock, $CustomerMock);
         $this->object = new CustomerLogin($this->manager);
 
     }

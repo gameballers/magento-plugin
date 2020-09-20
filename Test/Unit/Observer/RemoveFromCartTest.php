@@ -43,7 +43,7 @@ class RemoveFromCartTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
            
-        $this->manager = new RemoveFromCartManager($SessionMock,$ClientkeysTableMock,$CategoryFactoryMock,$ProductFactoryMock,$GbEnableCheckerMock);
+        $this->manager = new RemoveFromCartManager($SessionMock, $ClientkeysTableMock, $CategoryFactoryMock, $ProductFactoryMock, $GbEnableCheckerMock);
         $this->object = new RemoveFromCart($this->manager);
     
     }

@@ -24,15 +24,14 @@ class PlaceOrderManager
         \Magento\Catalog\Model\CategoryFactory $categoryFactory, 
         \Magento\Catalog\Model\ProductFactory $productFactory,
         \GbPlugin\Integration\Observer\Shared\GbEnableChecker $gbEnableChecker 
-        )
-        {
+    ) {
             $this->httpClientFactory = $httpClientFactory;
             $this->clientKeys = $clientKeys;
             $this->categoryFactory= $categoryFactory;
             $this->productFactory= $productFactory;
             $this->gbEnableChecker = $gbEnableChecker;
     
-        }
+    }
 
     public function execute($order)
     {
@@ -40,7 +39,7 @@ class PlaceOrderManager
         $this->order = $order;
 
         try {
-             if ($this->order->getState() === 'complete' && $this->order->getOrigData('state') != 'complete') {
+            if ($this->order->getState() === 'complete' && $this->order->getOrigData('state') != 'complete') {
                 {   
                 $customerId = $this->order->getData('customer_id');
 
@@ -53,13 +52,11 @@ class PlaceOrderManager
                     /**
                      * @var type{Array} categoryArray
                      * Array of all categories that are inside an order
-                     *
                      */
                     $categoryArray = array();
                     /**
                      * @var type{Array} manufacturersArray
                      * Array of all product manufacturers that are inside an order
-                     *
                      */
                     $manufacturersArray = array();
 
@@ -68,7 +65,8 @@ class PlaceOrderManager
                         // Get a product using product Id through object manager
                         $product = $this->productFactory->create()->load($productId);
                         $manufacturer = $product->getAttributeText('manufacturer');
-                        if ($manufacturer) {array_push($manufacturersArray, $manufacturer);}
+                        if ($manufacturer) {array_push($manufacturersArray, $manufacturer);
+                        }
                         $categoryIds = $product->getData('category_ids');
                         if ($categoryIds) {
                             foreach ($categoryIds as $categoryId) {
@@ -93,11 +91,16 @@ class PlaceOrderManager
 
                         $eventRequest->addEvent('place_order');
 
-                        if ($amount) {$eventRequest->addMetaData('place_order', 'amount', $amount);}
-                        if ($categoryArray) {$eventRequest->addMetaData('place_order', 'category', $categoryArray);}
-                        if ($manufacturersArray) {$eventRequest->addMetaData('place_order', 'manufacturer', $manufacturersArray);}
-                        if ($discounted) {$eventRequest->addMetaData('place_order', 'discounted', $discounted);}
-                        if ($weight) {$eventRequest->addMetaData('place_order', 'weight', +$weight);}
+                        if ($amount) {$eventRequest->addMetaData('place_order', 'amount', $amount);
+                        }
+                        if ($categoryArray) {$eventRequest->addMetaData('place_order', 'category', $categoryArray);
+                        }
+                        if ($manufacturersArray) {$eventRequest->addMetaData('place_order', 'manufacturer', $manufacturersArray);
+                        }
+                        if ($discounted) {$eventRequest->addMetaData('place_order', 'discounted', $discounted);
+                        }
+                        if ($weight) {$eventRequest->addMetaData('place_order', 'weight', +$weight);
+                        }
 
                         $pointsTransaction = new \Gameball\Models\PointsTransaction();
                         $pointsTransaction->rewardAmount = $amount;
@@ -108,8 +111,8 @@ class PlaceOrderManager
 
                     }
                 }
+                }
             }
-        }
             else if ($this->order->getState() === 'new') {
                 $couponCode = $this->order->getData('coupon_code');
 
@@ -141,7 +144,6 @@ class PlaceOrderManager
     /**
      * @method hasDiscount
      * @return void
-     *
      */
     private function setIsDiscounted()
     {

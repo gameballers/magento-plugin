@@ -13,7 +13,7 @@ class CustomerSave implements ObserverInterface
 
     public function __construct(   
         CustomerSaveManager $CustomerSaveManager
-    ){
+    ) {
         $this->CustomerSaveManager = $CustomerSaveManager;
     }
 

@@ -17,8 +17,8 @@ class ViewProductManager
         \Magento\Customer\Model\Session $customerSession,
         \GbPlugin\Integration\Observer\Shared\ClientkeysTable $clientKeys,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-        \GbPlugin\Integration\Observer\Shared\GbEnableChecker $gbEnableChecker) 
-    {
+        \GbPlugin\Integration\Observer\Shared\GbEnableChecker $gbEnableChecker
+    ) { 
         $this->customerSession = $customerSession;
         $this->clientKeys = $clientKeys;
         $this->categoryFactory = $categoryFactory;
@@ -41,17 +41,16 @@ class ViewProductManager
                     /**
                      * @var type{Array} categoryArray
                      * Array of all categories that are inside an order
-                     *
                      */
                     $categoryArray = array();
 
-                    if ($categoryIds) {
-                        foreach ($categoryIds as $categoryId) {
-                            $category=$this->categoryFactory->create()->load($categoryId);
-                            $categoryName = $category->getName();
-                            array_push($categoryArray, $categoryName);
-                        }
+                if ($categoryIds) {
+                    foreach ($categoryIds as $categoryId) {
+                        $category=$this->categoryFactory->create()->load($categoryId);
+                        $categoryName = $category->getName();
+                        array_push($categoryArray, $categoryName);
                     }
+                }
 
                 $productName = $this->product->getName();
                 $productPrice = $this->product->getPrice();
@@ -73,21 +72,29 @@ class ViewProductManager
                     $eventRequest = \Gameball\Models\EventRequest::factory($playerRequest);
 
                     $eventRequest->addEvent('view_product');
-                    if ($productId) {$eventRequest->addMetaData('view_product', 'id', $productId);}
+                    if ($productId) {$eventRequest->addMetaData('view_product', 'id', $productId);
+                    }
 
-                    if ($productName) {$eventRequest->addMetaData('view_product', 'name', $productName);}
+                    if ($productName) {$eventRequest->addMetaData('view_product', 'name', $productName);
+                    }
 
-                    if ($productPrice) {$eventRequest->addMetaData('view_product', 'price', $productPrice);}
+                    if ($productPrice) {$eventRequest->addMetaData('view_product', 'price', $productPrice);
+                    }
 
-                    if ($productWeight) {$eventRequest->addMetaData('view_product', 'weight', +$productWeight);}
+                    if ($productWeight) {$eventRequest->addMetaData('view_product', 'weight', +$productWeight);
+                    }
 
-                    if ($categoryArray) {$eventRequest->addMetaData('view_product', 'category', $categoryArray);}
+                    if ($categoryArray) {$eventRequest->addMetaData('view_product', 'category', $categoryArray);
+                    }
 
-                    if ($productStock) {$eventRequest->addMetaData('view_product', 'stock', $productStock);}
+                    if ($productStock) {$eventRequest->addMetaData('view_product', 'stock', $productStock);
+                    }
 
-                    if ($specialPrice) {$eventRequest->addMetaData('view_product', 'special_price', $specialPrice);}
+                    if ($specialPrice) {$eventRequest->addMetaData('view_product', 'special_price', $specialPrice);
+                    }
 
-                    if ($manufacturer) {$eventRequest->addMetaData('view_product', 'manufacturer', $manufacturer);}
+                    if ($manufacturer) {$eventRequest->addMetaData('view_product', 'manufacturer', $manufacturer);
+                    }
 
                     $res = $gameball->event->sendEvent($eventRequest);
 

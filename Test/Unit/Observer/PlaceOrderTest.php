@@ -43,7 +43,7 @@ class PlaceOrderTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
            
-        $this->manager = new PlaceOrderManager($ZendClientFactoryMock,$ClientkeysTableMock,$CategoryFactoryMock,$ProductFactoryMock,$GbEnableCheckerMock);
+        $this->manager = new PlaceOrderManager($ZendClientFactoryMock, $ClientkeysTableMock, $CategoryFactoryMock, $ProductFactoryMock, $GbEnableCheckerMock);
         $this->object = new PlaceOrder($this->manager);
     
     }

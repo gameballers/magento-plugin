@@ -19,7 +19,7 @@ class ProductReviewManager
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
         \Magento\Catalog\Model\ProductFactory $productFactory,
         \GbPlugin\Integration\Observer\Shared\GbEnableChecker $gbEnableChecker 
-    ){
+    ) {
         $this->clientKeys = $clientKeys;
         $this->categoryFactory = $categoryFactory;
         $this->productFactory = $productFactory;
@@ -49,7 +49,6 @@ class ProductReviewManager
                      /**
                      * @var type{Array} categoryArray
                      * Array of all categories that are inside an order
-                     *
                      */
                     $categoryArray = array();
 
@@ -68,7 +67,7 @@ class ProductReviewManager
 
     
                     if ($gbEnable === "1" && $this->clientKeys->getReview()== 1) {
-                      $gameball = new \Gameball\GameballClient($this->clientKeys->getApiKey(), $this->clientKeys->getTransactionKey());
+                        $gameball = new \Gameball\GameballClient($this->clientKeys->getApiKey(), $this->clientKeys->getTransactionKey());
       
                         $playerRequest = new \Gameball\Models\PlayerRequest();
 
@@ -87,8 +86,8 @@ class ProductReviewManager
                             $eventRequest->addMetaData('review', 'category', $categoryArray);
                         }
                         if ($manufacturer) {
-                          $eventRequest->addMetaData('review', 'manufacturer', $manufacturer);
-                      }
+                            $eventRequest->addMetaData('review', 'manufacturer', $manufacturer);
+                        }
 
                         $res = $gameball->event->sendEvent($eventRequest);
 

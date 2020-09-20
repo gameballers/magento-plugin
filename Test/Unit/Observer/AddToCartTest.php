@@ -37,7 +37,7 @@ class AddToCartTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();    
 
-        $this->manager = new AddToCartManager($sessionMock, $ClientkeysTableMock,$CategoryFactoryMock,$GbEnableCheckerMock);
+        $this->manager = new AddToCartManager($sessionMock, $ClientkeysTableMock, $CategoryFactoryMock, $GbEnableCheckerMock);
         $this->object = new AddToCart($this->manager);
     }
 

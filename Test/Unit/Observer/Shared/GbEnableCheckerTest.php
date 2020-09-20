@@ -24,7 +24,7 @@ class GbEnableCheckerTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->object = new GbEnableChecker($CurlMock,$ClientKeysTableMock);
+        $this->object = new GbEnableChecker($CurlMock, $ClientKeysTableMock);
     }
 
     public function testGbEnableCheckerInstance()

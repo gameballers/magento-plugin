@@ -18,7 +18,7 @@ class ViewCartManager
         \GbPlugin\Integration\Observer\Shared\GbEnableChecker $GbEnableChecker,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Checkout\Model\Cart $cart
-    ){
+    ) {
         $this->customerSession = $customerSession;
         $this->clientKeys = $clientKeys;
         $this->GbEnableChecker = $GbEnableChecker;
@@ -30,42 +30,45 @@ class ViewCartManager
     {
         try{
 
-        $customerId = $this->customerSession->getCustomer()->getId();
+            $customerId = $this->customerSession->getCustomer()->getId();
 
-        if ($customerId) {
-        $items = $this->cart->getQuote()->getAllItems();
-        $productCount = count($items);
-        $totalItems = 0;
+            if ($customerId) {
+                $items = $this->cart->getQuote()->getAllItems();
+                $productCount = count($items);
+                $totalItems = 0;
 
-        foreach ($items as $item) {
-            $qty = $item->getQty();
-            $totalItems += $qty;
-        }
+                foreach ($items as $item) {
+                    $qty = $item->getQty();
+                    $totalItems += $qty;
+                }
 
 
-            $gbEnable = $this->GbEnableChecker->check();
+                $gbEnable = $this->GbEnableChecker->check();
 
             
-            if ($gbEnable === "1" && $this->clientKeys->getViewCart()== 1) {
-                $gameball = new \Gameball\GameballClient($this->clientKeys->getApiKey(), $this->clientKeys->getTransactionKey());
+                if ($gbEnable === "1" && $this->clientKeys->getViewCart()== 1) {
+                    $gameball = new \Gameball\GameballClient($this->clientKeys->getApiKey(), $this->clientKeys->getTransactionKey());
 
-                $playerRequest = new \Gameball\Models\PlayerRequest();
+                    $playerRequest = new \Gameball\Models\PlayerRequest();
 
-                $playerRequest->playerUniqueId = (string) $customerId;
-                $eventRequest = \Gameball\Models\EventRequest::factory($playerRequest);
+                    $playerRequest->playerUniqueId = (string) $customerId;
+                    $eventRequest = \Gameball\Models\EventRequest::factory($playerRequest);
 
-                $eventRequest->addEvent('view_cart');
+                    $eventRequest->addEvent('view_cart');
 
-                if ($totalItems) {$eventRequest->addMetaData('view_cart', 'total', $totalItems);}
-                if ($productCount) {$eventRequest->addMetaData('view_cart', 'products_count', $productCount);}
+                    if ($totalItems) {$eventRequest->addMetaData('view_cart', 'total', $totalItems);
+                    }
+                    if ($productCount) {$eventRequest->addMetaData('view_cart', 'products_count', $productCount);
+                    }
 
-                $res = $gameball->event->sendEvent($eventRequest);
+                    $res = $gameball->event->sendEvent($eventRequest);
+
+                }
 
             }
-
         }
-    }
-    catch(Exception $e){}
+        catch(Exception $e){
+        }
     }
 }
 

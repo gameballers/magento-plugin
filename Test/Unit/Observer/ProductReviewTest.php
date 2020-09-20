@@ -38,7 +38,7 @@ class ProductReviewTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
            
-        $this->manager = new ProductReviewManager($ClientkeysTableMock,$CategoryFactoryMock,$ProductFactoryMock,$GbEnableCheckerMock);
+        $this->manager = new ProductReviewManager($ClientkeysTableMock, $CategoryFactoryMock, $ProductFactoryMock, $GbEnableCheckerMock);
         $this->object = new ProductReview($this->manager);
     }
 

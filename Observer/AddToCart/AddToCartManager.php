@@ -17,8 +17,8 @@ class AddToCartManager
         \Magento\Customer\Model\Session $customerSession,
         \GbPlugin\Integration\Observer\Shared\ClientkeysTable $clientKeys,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-        \GbPlugin\Integration\Observer\Shared\GbEnableChecker $GbEnableChecker) 
-    {
+        \GbPlugin\Integration\Observer\Shared\GbEnableChecker $GbEnableChecker
+    ) { 
         $this->customerSession = $customerSession;
         $this->clientKeys = $clientKeys;
         $this->categoryFactory = $categoryFactory;

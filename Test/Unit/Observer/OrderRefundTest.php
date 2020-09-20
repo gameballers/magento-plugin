@@ -28,7 +28,7 @@ class OrderRefundTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->manager = new OrderRefundManager($ClientkeysTableMock,$GbEnableCheckerMock);
+        $this->manager = new OrderRefundManager($ClientkeysTableMock, $GbEnableCheckerMock);
         $this->object = new OrderRefund($this->manager);
         
     }

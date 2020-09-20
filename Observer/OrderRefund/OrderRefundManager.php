@@ -17,7 +17,7 @@ class OrderRefundManager
     public function __construct(   
         \GbPlugin\Integration\Observer\Shared\ClientkeysTable $clientKeys,
         \GbPlugin\Integration\Observer\Shared\GbEnableChecker $gbEnableChecker
-    ){
+    ) {
         $this->clientKeys = $clientKeys;
         $this->gbEnableChecker = $gbEnableChecker;
     }

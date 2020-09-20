@@ -44,7 +44,7 @@ class RegisterSuccessTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
            
-        $this->manager = new RegisterSuccessManager($CustomerRepositoryInterfaceMock,$SessionManagerInterfaceMock,$HttpMock,$ClientkeysTableMock,$CustomerMock);
+        $this->manager = new RegisterSuccessManager($CustomerRepositoryInterfaceMock, $SessionManagerInterfaceMock, $HttpMock, $ClientkeysTableMock, $CustomerMock);
         $this->object = new RegisterSuccess($this->manager);
   
     }

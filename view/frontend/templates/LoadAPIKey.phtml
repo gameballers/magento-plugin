@@ -24,17 +24,6 @@ if ($customerSession->isLoggedIn()) {
                     APIKey: '$apikey'
                 });
             };
-            document.addEventListener('readystatechange', event => { 
-                if (event.target.readyState === 'complete') {
-                    setTimeout(() => {
-                        let script = document.createElement('script');
-                        script.type = 'text/javascript';
-                        script.src = '$widgetUrl';
-                        script.defer = true;
-                        document.getElementsByTagName('head')[0].appendChild(script);
-                    }, 10000);
-                }
-            });
     </script>";
 
 } else {
@@ -45,17 +34,8 @@ if ($customerSession->isLoggedIn()) {
                     APIKey: '$apikey'
                 });
             };
-            document.addEventListener('readystatechange', event => { 
-                if (event.target.readyState === 'complete') {
-                    setTimeout(() => {
-                        let script = document.createElement('script');
-                        script.type = 'text/javascript';
-                        script.src = '$widgetUrl';
-                        script.defer = true;
-                        document.getElementsByTagName('head')[0].appendChild(script);
-                    }, 10000);
-                }
-            });
     </script>";
 
 }
+
+echo "<script defer src='$widgetUrl'></script>";

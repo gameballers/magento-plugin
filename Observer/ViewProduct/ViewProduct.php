@@ -17,7 +17,8 @@ class ViewProduct implements ObserverInterface
 
 
     public function __construct(   
-        \GbPlugin\Integration\Observer\ViewProduct\ViewProductManager $ViewProductManager){
+        \GbPlugin\Integration\Observer\ViewProduct\ViewProductManager $ViewProductManager
+    ) {
         $this->ViewProductManager = $ViewProductManager;
     }
 

@@ -19,7 +19,7 @@ class RemoveFromCartManager
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
         \Magento\Catalog\Model\ProductFactory $productFactory,
         \GbPlugin\Integration\Observer\Shared\GbEnableChecker $gbEnableChecker
-    ){
+    ) {
         $this->customerSession = $customerSession;
         $this->clientKeys = $clientKeys;
         $this->categoryFactory = $categoryFactory;
@@ -48,17 +48,16 @@ class RemoveFromCartManager
                      /**
                      * @var type{Array} categoryArray
                      * Array of all categories that are inside an order
-                     *
                      */
                     $categoryArray = array();
 
-                    if ($categoryIds) {
-                        foreach ($categoryIds as $categoryId) {
-                            $category =$this->categoryFactory->create()->load($categoryId);
-                            $categoryName = $category->getName();
-                            array_push($categoryArray, $categoryName);
-                        }
-                    }
+            if ($categoryIds) {
+                foreach ($categoryIds as $categoryId) {
+                    $category =$this->categoryFactory->create()->load($categoryId);
+                    $categoryName = $category->getName();
+                    array_push($categoryArray, $categoryName);
+                }
+            }
 
             $productWeight = $this->product->getData('weight');
             
@@ -68,7 +67,7 @@ class RemoveFromCartManager
                 $gbEnable = $this->gbEnableChecker->check();
 
                 if ($gbEnable === "1" && $this->clientKeys->getRemoveFromCart()== 1) {
-                  $gameball = new \Gameball\GameballClient($this->clientKeys->getApiKey(), $this->clientKeys->getTransactionKey());
+                    $gameball = new \Gameball\GameballClient($this->clientKeys->getApiKey(), $this->clientKeys->getTransactionKey());
   
                     $playerRequest = new \Gameball\Models\PlayerRequest();
                     $playerRequest->playerUniqueId = (string) $customerId;
@@ -88,7 +87,7 @@ class RemoveFromCartManager
                         $eventRequest->addMetaData('remove_from_cart', 'special_price', $specialPrice);
                     }
                     if ($manufacturer) {
-                      $eventRequest->addMetaData('remove_from_cart', 'manufacturer', $manufacturer);
+                        $eventRequest->addMetaData('remove_from_cart', 'manufacturer', $manufacturer);
                     }
 
                     $res = $gameball->event->sendEvent($eventRequest);
