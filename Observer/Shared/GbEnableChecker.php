@@ -28,4 +28,18 @@ class GbEnableChecker
 
         return (string) $gbEnabledFlag;
     }
+    public function checkRewardEnabled()
+    {
+        $url = 'https://api.gameball.co/api/v1.0/Bots/BotSettings';
+        $headers = ["APIKey" => $this->clientKeys->getApiKey()];
+
+        $this->curl->setHeaders($headers);
+        $this->curl->get($url);
+
+        $result = $this->curl->getBody();
+        $bodyAsArray = json_decode($result, true);
+        $rewardEnabledFlag = $bodyAsArray['response']['rewardEnabled'];
+
+        return (string) $rewardEnabledFlag;
+    }
 }

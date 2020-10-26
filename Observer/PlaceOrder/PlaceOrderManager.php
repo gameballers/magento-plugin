@@ -79,6 +79,7 @@ class PlaceOrderManager
                     
                     $gbEnable = $this->gbEnableChecker->check();
 
+                    $rewardEnabled = $this->gbEnableChecker->checkRewardEnabled();
 
                     if ($gbEnable === "1" && $this->clientKeys->getPlaceOrder()== 1) {
                         $gameball = new \Gameball\GameballClient($this->clientKeys->getApiKey(), $this->clientKeys->getTransactionKey());
@@ -101,10 +102,12 @@ class PlaceOrderManager
                         }
                         if ($weight) {$eventRequest->addMetaData('place_order', 'weight', +$weight);
                         }
-
-                        $pointsTransaction = new \Gameball\Models\PointsTransaction();
-                        $pointsTransaction->rewardAmount = $amount;
-                        $pointsTransaction->transactionId = $orderId;
+                        $pointsTransaction = null;
+                        if($rewardEnabled == "1") {
+                            $pointsTransaction = new \Gameball\Models\PointsTransaction();
+                            $pointsTransaction->rewardAmount = $amount;
+                            $pointsTransaction->transactionId = $orderId;
+                        }
                         $actionRequest = \Gameball\Models\ActionRequest::factory($playerRequest, $eventRequest, $pointsTransaction);
                         $res = $gameball->action->sendAction($actionRequest);
 
